@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Little Link</title>
+  </head>
+  <body>
+      <div class="container">
+      <h1>Little Link</h1>
+      <form action="/shortLinks" method="POST" class="my-4 form-inline">
+          <input class="form-control col mr-2" required type="url" placeholder="Url" name="fullUrl" id="fullUrl"></input>
+          <button class="btn btn-success" type="submit">Shrink</button>
+      </form>
+
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Big URL</th>
+                  <th>Little URL</th>
+                  <th>Clicks</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% littleLinks.forEach(littleLink => { %>
+                <tr>
+                  <td><a href="<%= littleLink.big %>"><%= littleLink.big %></a></td>
+                  <td><a href="<%= littleLink.little %>"><%= littleLink.little %></a></td>
+                  <td><%= littleLink.clicks %></td>
+                </tr>
+              <% }) %>
+          </tbody>
+      </table>
+    </div>
+  </body>
+</html>
